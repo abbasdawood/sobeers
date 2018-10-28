@@ -1,0 +1,11 @@
+<div class="row my-5">
+    <div class="col-12 col-md-6" [ngClass]="{'order-1': row.direction === 'ltr', 'order-12': row.direction === 'rtl'}">
+        <div [innerHTML]="row.content" class="p-3"></div>
+        <a *ngIf="row.button && row.button.text" class="btn btn-primary btn-lg my-3 ml-3" [href]="row.button.link" role="button">
+            {{row.button.text}}
+        </a>
+    </div>
+    <div class="col-12 col-md-6" [ngClass]="{'order-12': row.direction === 'ltr', 'order-1': row.direction === 'rtl'}">
+        <img [src]="row.image" class="img-fluid">
+    </div>
+</div>

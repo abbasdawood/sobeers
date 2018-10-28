@@ -1,0 +1,31 @@
+<div class="jumbotron case-content p-0" [style.backgroundImage]="backgroundImage" [style.backgroundColor]="backgroundColor">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center" [ngClass]="{
+      'text-white': theme === 'light',
+      'text-dark': theme === 'dark'
+    }">
+      <div class="col-12 col-md-6 py-5" [ngClass]="{
+        'order-12 px-10': direction === 'rtl', 
+        'order-1 px-10': direction === 'ltr',
+        'd-none': !(title && title.length),
+        'mx-md-auto text-center': '!(items && items.length)'
+      }">
+        <h6 class="mb-2" [style.color]="color">{{pretitle}}</h6>
+        <h2>{{title}}</h2>
+        <div [innerHTML]="content" class="pr-4"></div>
+        <div class="row no-gutters">
+          <div class="col-4 col-md-3" *ngFor="let member of team">
+            <sc-person-thumb [id]="member"></sc-person-thumb>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 py-md-5" [ngClass]="{
+        'order-12': direction === 'ltr', 
+        'order-1': direction === 'rtl',
+        'd-none': !(items && items.length)
+      }">
+        <gallery [items]="items" [thumb]="false" [style.height.px]="500" [counter]="false" [dots]="items && (items.length > 1)"></gallery>
+      </div>
+    </div>
+  </div>
+</div>

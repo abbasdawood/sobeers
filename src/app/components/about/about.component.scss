@@ -1,0 +1,109 @@
+.scroller {
+    width: 100%;
+    overflow-x: scroll;
+    height: auto;
+    padding-top: 50px;
+}
+
+.timeline-container {
+    .description {
+        width: 240px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: rotate(0) translateY(10px);
+        position: fixed;
+        border-radius: 0.25em;
+        padding: 0.5em;
+        opacity: 0;
+        transition: all 0.15s ease-out;
+        // animation: grow 0.2s ease-in;
+
+        button{
+            transform: scale(0.5);
+            transform-origin: 100% 0%;
+        }
+
+        &.fadeIn{
+            opacity: 1;
+            transform: rotate(0) translateY(-220px) !important;
+            transition: all 0.2s ease-in;
+        }
+    }
+    .arrow {
+        display: block;
+        height: 100%;
+        width: 80px;
+        position: absolute;
+        transform: translateY(30px);
+        top: 0;
+        button {
+            background: white;
+            outline: none;
+            border: none;
+            padding: 0.25em;
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+        &.left {
+            left: 0;
+            background: linear-gradient(to right, #fff, rgba($color: #fff, $alpha:0));
+        }
+        &.right {
+            right: 0;
+            background: linear-gradient(to left, #fff, rgba($color: #fff, $alpha:0));
+        }
+    }
+    .timeline {
+        &:before {
+            content: '';
+            height: 1px;
+            background: greenyellow;
+            width: 100%;
+            display: block;
+        }
+        .list-inline-item {
+            &.year {
+                div {
+                    transform: rotate(-45deg) translate(20px, -21px);
+                }
+            }
+            &.month {
+                transform: translateY(-14px);
+            }
+            .dot {
+                vertical-align: middle;
+                width: 18px;
+                height: 18px;
+                display: inline-block;
+                margin-right: 8px;
+                background: rgb(75, 134, 0);
+                border-radius: 50%;
+                border: 4px double #fff;
+                cursor: pointer;
+                &.month {
+                    background: lightgreen;
+                    border: 2px solid darken($color: lightgreen, $amount: 20);
+                    width: 12px;
+                    height: 12px;
+                    &:hover{
+                        background: lighten($color: lightgreen, $amount: 5);
+                        transform: scale(1.2);
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+@keyframes grow{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,39 @@
+.person-tile{
+    border-radius: 0;
+    .card-img-overlay {
+        opacity: 0;
+        transition: all 0.2s ease-out;
+        &.fuchsia-aqua {
+            background: linear-gradient(rgba(117, 203, 198, 0.9), rgba(20, 178, 191, 0.9) 50%, rgba(120, 58, 150, 0.9) 75%);
+        }
+        &.fuchsia-pink {
+            background: linear-gradient(rgba(129, 78, 159, 0.9), rgba(204, 51, 153, 0.9) 50%, rgba(237, 33, 109, 0.9) 75%);
+        }
+        &.indigo-aqua {
+            background: linear-gradient(rgba(69, 53, 145, 0.9), rgba(25, 163, 221, 0.9) 50%, rgba(107, 202, 207, 0.9) 75%);
+        }
+        &.peach-orange {
+            background: linear-gradient(rgba(238, 104, 37, 0.9), rgba(237, 57, 110, 0.9));
+        }
+        &.green-mango {
+            background: linear-gradient(rgba(255, 203, 10, 0.9), rgba(139, 199, 82, 0.9) 50%, rgba(58, 125, 75, 0.9) 75%);
+        }
+        &.mango-peach {
+            background: linear-gradient(rgba(255, 203, 10, 0.9), rgba(249, 157, 61, 0.9) 50%, rgba(237, 57, 110, 0.9) 75%);
+        }
+        &.yellow-aqua {
+            background: linear-gradient(rgba(255, 227, 0, 0.9), rgba(109, 195, 140, 0.9) 50%, rgba(61, 195, 218, 0.9) 75%);
+        }
+        &.gray-gray {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) 75%);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        .card-img-overlay {
+            opacity: 1;
+            transition: all 0.2s;
+        }
+    }
+}

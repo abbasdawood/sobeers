@@ -1,0 +1,6 @@
+<div class="card bg-dark text-white person-thumb" *ngIf="person && person.name">
+  <img class="card-img" [src]="person.profilePicture" [alt]="person.name">
+  <div class="card-img-overlay text-capitalize h-100 d-flex flex-column justify-content-end pb-0">
+    <strong class="small">{{person.name}}</strong>
+  </div>
+</div>

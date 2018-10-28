@@ -1,0 +1,19 @@
+<div class="jumbotron text-center" *ngIf="jumbotron">
+  <h1 class="display-5 mt-5 mt-md-0">{{jumbotron.heading}}</h1>
+  <p class="lead" [innerHTML]="jumbotron.content"></p>
+  <a *ngIf="jumbotron.button && jumbotron.button.text" class="btn btn-primary btn-lg my-3" [href]="jumbotron.button.link" role="button">
+    {{jumbotron.button.text}}
+  </a>
+  <hr class="my-2">
+  <h3 class="my-5 my-md-3">What's New</h3>  
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let case of cases">
+        <sc-case-tile [case]="case"></sc-case-tile>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pt-5">
+  <sc-home-row [row]="row" *ngFor="let row of rows"></sc-home-row>
+</div>

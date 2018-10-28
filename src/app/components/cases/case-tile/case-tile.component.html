@@ -1,0 +1,9 @@
+<div class="case-tile" [routerLink]="['/work',case.id, case.slug]">
+  <div class="card text-white border-0" [style.backgroundColor]="case.color">
+    <img class="card-img-top" [src]="case.cover.tile" [alt]="case.title">
+    <div class="card-body">
+      <p class="card-text mb-0 text-uppercase">{{case.client}} {{'• ' + case.year}}</p>
+      <h3 class="card-title">{{case.title}}</h3>
+    </div>
+  </div>
+</div>

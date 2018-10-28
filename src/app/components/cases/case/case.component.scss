@@ -1,0 +1,11 @@
+.case-hero{
+    padding-top: 30vh;
+    height: 100vh;
+    max-height: calc(100vh - 80px);
+    margin: 30px;
+    border-radius: 0;
+    background-position: 50%;
+    background-size: cover;
+    overflow: hidden;
+    text-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.25);
+}

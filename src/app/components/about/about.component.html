@@ -1,0 +1,50 @@
+<div class="container pt-5 mt-5">
+  <div class="row">
+    <div class="col-12 col-md-8 pr-md-5">
+      <div class="mb-3">
+        <h1 class="mb-1">{{title}}</h1>
+        <p class="lead text-muted">{{subtitle}}</p>
+      </div>
+      <p [innerHTML]="content"></p>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-12">
+    <hr class="mx-3">
+      <h2>Timeline</h2>
+    </div>
+    <div class="col-md-12">
+      <div class="scroller">
+        <div class="timeline-container" [style.width.px]="throwbacks.length * 400">
+          <div class="arrow left">
+            <button type="button">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+          <ul class="list-inline timeline px-3">
+            <li class="list-inline-item year" *ngFor="let group of throwbacks">
+              <div class="d-inline-block"><span class="dot"></span>{{group.year}}</div>
+              <ul class="list-inline d-inline-block mx-2">
+                <li class="list-inline-item month" *ngFor="let event of group.events; index as i">
+                  <span class="dot month" (mouseover)="openDescription(event, $event)"></span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="description" [style.left.px]="clickedCoordinate.left" [style.top.px]="clickedCoordinate.top" *ngIf="showEventDescription" [ngClass]="{'fadeIn': showEventDescription}">
+            <button type="button" class="btn btn-danger float-right" (click)="closeDescription()">
+              <i class="fas fa-times"></i>
+            </button>
+            <strong>{{selectedEvent.month}} {{selectedEvent.year}}</strong>
+            <small [innerHTML]="selectedEvent.description"></small>
+          </div>
+          <div class="arrow right">
+            <button type="button">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

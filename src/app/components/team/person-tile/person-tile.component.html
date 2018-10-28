@@ -1,0 +1,8 @@
+<div class="card bg-dark text-white text-center border-0 person-tile" *ngIf="person">
+    <img class="card-img" [src]="person.profilePicture" [alt]="person.name">
+    <div class="card-img-overlay text-capitalize" [ngClass]="person.gradient">
+      <h5 class="card-title mt-5">{{person.name}}</h5>
+      <p class="card-text mb-0">{{person.designation}}</p>
+      <p class="card-text small">{{person.department}}</p>
+    </div>
+</div>

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Lato:900|Maven+Pro');
+
+$font-family-base: 'Maven Pro', sans-serif;
+$headings-font-family: 'Lato', sans-serif;
+
+$headings-font-weight: 900;
+
+$grid-gutter-width: 45px;
+
+@import
+    '~bootstrap/scss/bootstrap',
+    '~@ngx-gallery/core/styles/gallery.scss',
+    '~@ngx-gallery/core/styles/lightbox';
+
+html,body{
+    overflow-x: hidden;
+}
+
+.px-10{
+    padding-right: 5rem;
+    padding-left: 5rem;
+}

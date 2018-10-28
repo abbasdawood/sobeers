@@ -1,0 +1,46 @@
+<div id="nav-container" [@animateNav]="navState" [ngClass]="{'open': state}">
+  <div class="wrapper-menu" (click)="toggleNav()" [ngClass]="{'open': state}">
+    <div class="line-menu half start"></div>
+    <div class="line-menu"></div>
+    <div class="line-menu half end"></div>
+  </div>
+  <div class="nav-body text-white p-5">
+    <div class="container pt-0 pt-md-5">
+      <div class="row mt-5 text-left">
+        <div class="col-6 text-uppercase mx-md-auto">
+          <ul class="list-unstyled" [@listAnimation]="links.length">
+            <li class="media py-3" (click)="toggleNav()" *ngFor="let link of links" [routerLink]="'/'+ link.route">
+              <a class="d-flex">
+                <img src="" alt="">
+              </a>
+              <div class="media-body">
+                <h1>{{link.name}}</h1>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-inline">
+            <li class="list-inline-item" *ngFor="let link of secondaryLinks" (click)="toggleNav()" [routerLink]="'/'+ link.route">
+            {{link.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="row fixed-bottom px-5 py-5 d-none d-md-block">
+          <div class="col-12">
+            <ul class="list-inline text-white float-right">
+              <li class="list-inline-item" *ngFor="let social of socials">
+                <a [href]="social.link" target="_blank" class="text-white">
+                  <i class="fab fa-lg" [ngClass]="social.icon"></i>
+                </a>
+              </li>
+            </ul>
+            <ul class="list-inline float-left">
+              <li>&copy; {{copyrightInfo}}
+                <small class="text-muted d-block">{{companyInfo}}</small>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+    </div>
+  </div>
+</div>

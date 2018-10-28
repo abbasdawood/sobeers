@@ -1,0 +1,21 @@
+<div *ngIf="caseStudy">
+  <div class="jumbotron text-center case-hero text-white" [style.background-image]="backgroundImage">
+    <small class="mb-0 d-block">
+      <span *ngFor="let tag of caseStudy.info.tags; let last = last">{{last ? tag : tag + ' / '}}</span>
+    </small>
+    <h1>{{caseStudy.info.title}}</h1>
+    <p class="lead mb-0"><span>{{caseStudy.info.client | titlecase}}</span>{{' • ' + caseStudy.info.year}}</p>
+  </div>
+  <sc-case-row *ngFor="let content of caseStudy.content" [hidden]="!content"
+    [content]="content.rowContent"
+    [pretitle]="content.rowPreTitle"
+    [title]="content.rowTitle"
+    [background]="content.background"
+    [images]="content.gallery"
+    [direction]="content.direction"
+    [theme] = "content.theme"
+    [team]="content.team"
+    [color]="caseStudy.info.color"
+  ></sc-case-row>
+</div>
+

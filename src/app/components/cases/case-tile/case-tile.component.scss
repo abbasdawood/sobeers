@@ -1,0 +1,49 @@
+@mixin slideUp($ymovement, $timing, $animation) {
+    transform: translateY($ymovement);
+    -moz-transform: translateY($ymovement);
+    -webkit-transform: translateY($ymovement);
+    -o-transform: translateY($ymovement);
+    -ms-transform: translateY($ymovement);
+    transition: all $timing $animation;
+    -moz-transition: all $timing $animation;
+    -webkit-transition: all $timing $animation;
+    -o-transition: all $timing $animation;
+    -ms-transition: all $timing $animation;
+}
+
+@mixin transition($timing, $animation){
+    transition: all $timing $animation;
+    -moz-transition: all $timing $animation;
+    -webkit-transition: all $timing $animation;
+    -o-transition: all $timing $animation;
+    -ms-transition: all $timing $animation;
+}
+
+.case-tile {
+    cursor: pointer;
+    background: black;
+    @media (min-width: 768px) {
+        max-height: calc(100% - 160px);
+        overflow: hidden;
+        .card {
+            border-radius: 0;
+            .card-img-top {
+                @include transition(0.1s, ease-out);
+                border-radius: inherit;
+            }
+            .card-body {
+                @include transition(0.1s, ease-out);
+                background: inherit;
+            }
+        }
+        &:hover,
+        &:focus {
+            .card-img-top {
+                @include slideUp(-30px, 0.15s, ease-in); // transform: translateY(-30px);
+            }
+            .card-body {
+                @include slideUp(-160px, 0.2s, ease-in);
+            }
+        }
+    }
+}

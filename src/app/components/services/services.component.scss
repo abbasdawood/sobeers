@@ -1,0 +1,17 @@
+.service-card{
+    border: 0;
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+    .card-body{
+        min-height: 240px;
+    }
+    .card-img-top{
+        border-radius: 0;
+    }
+
+    &:hover{
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.2);
+        transition: all 0.2s ease-in;
+    }
+}
