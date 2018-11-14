@@ -21,18 +21,24 @@ export class CaseRowComponent implements OnInit {
   @Input('team') team: string[];
   @Input('color') color: string;
 
-  @Input('images') images: GalleryImage[];
+  @Input('images') images: GalleryImage[] = [];
+  id: string;
+
   items: GalleryItem[];
   backgroundImage: any;
   backgroundColor: string;
+
+  showDots: boolean;
+  textStyle: string;
 
   constructor(
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
-    console.log(this.background)
-    if(this.background && this.background.url){
+    this.id = this.title.substring(0, 6)
+
+    if (this.background && this.background.url) {
       this.backgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.background.url})`)
       this.backgroundColor = this.background.color
     } else {
@@ -40,13 +46,17 @@ export class CaseRowComponent implements OnInit {
     }
 
     if (this.images && this.images.length) {
-      this.items = this.images.map((item: GalleryImage) => {
-        if (!_.isEmpty(item)) {
-          return new ImageItem(item.url, item.thumb)
+      this.textStyle = 'left'
+      this.showDots = this.images.length === 1 ? false : true
+      this.items = _.map(this.images, item => {
+        if (item && item.url) {
+          return new ImageItem({src: item.url})
         } else {
-          return new YoutubeItem(item.src)
+          return new YoutubeItem({src: item.src})
         }
       })
+    } else {
+      this.textStyle = 'center'
     }
   }
 

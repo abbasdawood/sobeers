@@ -8,9 +8,8 @@ export class Case {
     private error: Error;
 
     constructor(document: any) {
-        console.log(document)
         if (document && document.id) {
-            let raw = document.rawJSON
+            let raw = document.data
             let info = {} as CaseInfo
             let content = [] as CaseContent[]
             info.id = document.id
@@ -18,7 +17,7 @@ export class Case {
             info.tags = document.tags
             info.year = raw.year
             info.client = raw.client.slug
-            info.slug = document.slug
+            info.slug = document.slugs[0]
             info.cover = {
                 main: raw.cover.url,
                 mobile: raw.cover.mobile.url,
@@ -27,13 +26,13 @@ export class Case {
             }
             info.color = raw.case_color
 
-            content = raw.body.map(slice => {
+            content = _.map(raw.body, slice => {
 
                 let infoMap = {
                     rowTitle: slice.primary.row_title,
                     rowPreTitle: slice.primary.row_pre_title,
-                    rowContent: (slice.primary.row_content && slice.primary.row_content.length) ? 
-                        RichText.asHtml(slice.primary.row_content): '',
+                    rowContent: (slice.primary.row_content && slice.primary.row_content.length) ?
+                        RichText.asHtml(slice.primary.row_content) : '',
                     direction: slice.primary.row_direction || 'ltr',
                     theme: slice.primary.theme || 'dark'
                 }
@@ -45,27 +44,28 @@ export class Case {
 
                 infoMap['background'] = background
 
-                switch (slice.slice_type) {
-                    case 'row':
-                        let gallery = slice.items.map(item => {
-                            if (!_.isEmpty(item.gallery_video)) {
-                                return { src: item.gallery_video.embed_url }
-                            } else if (!_.isEmpty(item.gallery_image)){
-                                return { url: item.gallery_image.url }
-                            }
-                        })
+                if (slice.slice_type === 'row') {
+                    let gallery = slice.items.map(item => {
+                        console.log(item)
+                        if (!_.isEmpty(item.gallery_image)) {
+                            return { url: item.gallery_image.url }
+                        } else if (item.gallery_youtube_id) {
+                            return { src: item.gallery_youtube_id }
+                        }
+                    })
 
-                        infoMap['gallery'] = _.compact(gallery)
+                    infoMap['gallery'] = _.compact(gallery)
 
-                        return infoMap
-                    case 'team':
-                        let team: string[] = slice.items.map(item => item.person.id)
-                        infoMap['team'] = team
-                        return infoMap
+                    return infoMap
+                } else if (slice.slice_type === 'team') {
+                    let team: string[] = slice.items.map(item => item.person.id)
+                    infoMap['team'] = team
+                    return infoMap
                 }
             })
 
             this.case = { info: info, content: _.compact(content) }
+            console.log(this.case)
         } else {
             this.error = new Error('Document not found')
         }

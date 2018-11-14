@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.prismicService.getAbout().then(document => {
-      let raw = document.rawJSON
+      let raw = document.data
 
       this.title = RichText.asText(raw.title).trim()
       this.subtitle = RichText.asText(raw.subtitle).trim()

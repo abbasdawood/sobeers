@@ -8,11 +8,11 @@
         'order-12 px-10': direction === 'rtl', 
         'order-1 px-10': direction === 'ltr',
         'd-none': !(title && title.length),
-        'mx-md-auto text-center': '!(items && items.length)'
-      }">
-        <h6 class="mb-2" [style.color]="color">{{pretitle}}</h6>
-        <h2>{{title}}</h2>
-        <div [innerHTML]="content" class="pr-4"></div>
+        'mx-md-auto': '!(items && items.length)'
+      }" [style.textAlign]="textStyle">
+        <h6 class="mb-2" [style.color]="color" [ngClass]="{'px-4': direction === 'rtl'}">{{pretitle}}</h6>
+        <h2 [ngClass]="{'px-4': direction === 'rtl'}">{{title}}</h2>
+        <div [innerHTML]="content" [ngClass]="{'pr-4': direction === 'ltr', 'px-4': direction === 'rtl'}"></div>
         <div class="row no-gutters">
           <div class="col-4 col-md-3" *ngFor="let member of team">
             <sc-person-thumb [id]="member"></sc-person-thumb>
@@ -24,7 +24,9 @@
         'order-1': direction === 'rtl',
         'd-none': !(items && items.length)
       }">
-        <gallery [items]="items" [thumb]="false" [style.height.px]="500" [counter]="false" [dots]="items && (items.length > 1)"></gallery>
+        <div *ngIf="items && items.length">
+          <gallery [id]="id" [items]="items" [style.height.px]="500" [counter]="false" [dots]="showDots"></gallery>
+        </div>
       </div>
     </div>
   </div>

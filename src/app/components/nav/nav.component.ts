@@ -53,7 +53,7 @@ export class NavComponent implements OnInit {
   public state: boolean = false
   public loading: boolean = false
   public navState: string = ''
-  public primaryLinks = []
+  public primaryLinks: any = []
   public secondaryLinks = []
   public links = []
   public copyrightInfo;
@@ -87,7 +87,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.loading = true
     this.prismicService.getNavigation().then(document => {
-      let raw = document.rawJSON
+      let raw = document.data
 
       this.primaryLinks = raw.links.map(value => {
         return {

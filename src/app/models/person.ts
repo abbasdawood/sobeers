@@ -10,7 +10,7 @@ export class Person {
 
     constructor(document: any){
         if (document) {
-            let raw = document.rawJSON
+            let raw = document.data
             this.person.profilePicture = raw.profile_picture.url || this.commonService.generatePlaceholderImage(300)
             this.person.name = RichText.asText(raw.name).trim()
             this.person.designation = raw.designation

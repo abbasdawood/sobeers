@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Prismic } from 'prismic.io';
+// import { Prismic } from 'prismic.io';
+import * as Prismic from 'prismic-javascript';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -83,9 +84,9 @@ export class PrismicService {
       filters.push(Prismic.Predicates.at('my.blog_post.featured', 'yes'))
     }
 
-    if(after){
-      filters.push(Prismic.Predicates.after(after))
-    }
+    // if(after){
+    //   filters.push(Prismic.Predicates.after(after))
+    // }
 
     return Prismic.getApi(environment.apiEndpoint).then(api => {
       return api.query(filters, options)

@@ -12,7 +12,7 @@ export class Service {
 
     constructor(document: any){
         if(document && document.id){
-            let raw = _.head(document.rawJSON.body)
+            let raw = _.head(document.data.body)
 
             this.pageTitle = RichText.asText(raw.primary.page_title).trim()
             this.pageContent = RichText.asHtml(raw.primary.page_content)

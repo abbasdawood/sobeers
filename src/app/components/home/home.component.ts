@@ -12,7 +12,7 @@ import { RichText } from 'prismic-dom';
 export class HomeComponent implements OnInit {
 
   cases = [] as CaseInfo[];
-  jumbotron: any;
+  jumbotron: any = {};
   rows = [];
   
   constructor(
@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
 
   loadHomeContent(){
     this.prismicService.getHome().then(document => {
-      console.log(document.rawJSON)
-      let raw = document.rawJSON
+      console.log(document.data)
+      let raw = document.data
       this.jumbotron = {
        heading: RichText.asText(raw.jumbotron_heading).trim(),
        content: RichText.asHtml(raw.jumbotron_content),

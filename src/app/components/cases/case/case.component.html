@@ -6,7 +6,7 @@
     <h1>{{caseStudy.info.title}}</h1>
     <p class="lead mb-0"><span>{{caseStudy.info.client | titlecase}}</span>{{' • ' + caseStudy.info.year}}</p>
   </div>
-  <sc-case-row *ngFor="let content of caseStudy.content" [hidden]="!content"
+  <sc-case-row *ngFor="let content of caseStudy.content"
     [content]="content.rowContent"
     [pretitle]="content.rowPreTitle"
     [title]="content.rowTitle"
@@ -18,4 +18,3 @@
     [color]="caseStudy.info.color"
   ></sc-case-row>
 </div>
-

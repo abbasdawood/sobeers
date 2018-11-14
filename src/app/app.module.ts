@@ -23,7 +23,6 @@ import { HomeComponent } from './components/home/home.component';
 import { HomeRowComponent } from './components/home/home-row/home-row.component';
 import { AboutComponent } from './components/about/about.component';
 import { CaseResolver } from './resolves/case.resolver';
-import { GroupByPipe } from './pipes/group-by';
 import { ServicesComponent } from './components/services/services.component';
 import { ServiceTileComponent } from './components/services/service-tile/service-tile.component';
 
@@ -50,15 +49,17 @@ import { ServiceTileComponent } from './components/services/service-tile/service
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    GalleryModule.forRoot(),
+    GalleryModule.forRoot({
+      loop: true,
+      thumb: false
+    }),
     LightboxModule.forRoot(),
     GallerizeModule,
   ],
   providers: [
     PrismicService,
     CommonService,
-    CaseResolver,
-    GroupByPipe
+    CaseResolver
   ],
   bootstrap: [AppComponent]
 })
