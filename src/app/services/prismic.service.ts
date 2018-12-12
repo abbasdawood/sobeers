@@ -30,6 +30,8 @@ export class PrismicService {
     })
   }
 
+  
+
   /**
    * Function to get the contents of the about page
    * @returns Promise
@@ -87,6 +89,28 @@ export class PrismicService {
     // if(after){
     //   filters.push(Prismic.Predicates.after(after))
     // }
+
+    return Prismic.getApi(environment.apiEndpoint).then(api => {
+      return api.query(filters, options)
+    })
+  }
+
+  /**
+   * Function to get documents of type person
+   * @param  {number} page
+   * @param  {number} pageSize
+   * @param  {string} content?
+   * @param  {string} tags?
+   * @returns Promise
+   */
+  getPeople(page: number = 1, pageSize: number = 10, showOnlyEmployees: boolean): Promise<any> {
+    let filters = [Prismic.Predicates.at('document.type', 'person')]
+
+    if(showOnlyEmployees){
+      filters.push(Prismic.Predicates.at('my.person.employee','yes'));
+    }
+
+    let options = { page: page, pageSize: pageSize, orderings: '[my.person.position]' }
 
     return Prismic.getApi(environment.apiEndpoint).then(api => {
       return api.query(filters, options)

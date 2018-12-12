@@ -8,8 +8,8 @@
         </div>
     </div>
     <div class="row no-gutters">
-        <div class="col-12 col-md-3">
-            <sc-person-tile [id]="'W6kDCxAAACAArFsK'"></sc-person-tile>
+        <div class="col-12 col-md-3" *ngFor="let id of team">
+            <sc-person-tile [id]="id"></sc-person-tile>
         </div>
     </div>
 </div>

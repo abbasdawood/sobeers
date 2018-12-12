@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PrismicService } from '../../services/prismic.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'sc-team',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  team: string[] = []
+
+  constructor(
+    private prismicService: PrismicService
+  ) { }
 
   ngOnInit() {
+    this.prismicService.getPeople(1, 100, true).then(response => {
+      var results = response.results
+      this.team = _.map(results, document => {
+        return document.id;
+      })
+    })
   }
 
 }
