@@ -37,7 +37,7 @@ export class CaseRowComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.title.substring(0, 6)
-
+    console.log(this.background)
     if (this.background && this.background.url) {
       this.backgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.background.url})`)
       this.backgroundColor = this.background.color

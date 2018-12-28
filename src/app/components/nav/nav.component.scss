@@ -25,6 +25,10 @@
         }
     }
     .wrapper-menu {
+        ::-webkit-scrollbar { 
+            display: none; 
+        }
+        overflow: hidden;
         position: absolute;
         width: 36px;
         height: 36px;
@@ -35,6 +39,7 @@
         transition: transform 330ms ease-out;
         padding: 5px;
         &.open {
+        overflow: hidden;
             transform: rotate(-45deg);
             transition: all 330ms ease-in;
             .line-menu {

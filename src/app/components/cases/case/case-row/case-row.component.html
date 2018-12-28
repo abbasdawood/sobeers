@@ -4,15 +4,15 @@
       'text-white': theme === 'light',
       'text-dark': theme === 'dark'
     }">
-      <div class="col-12 col-md-6 py-5" [ngClass]="{
-        'order-12 px-10': direction === 'rtl', 
-        'order-1 px-10': direction === 'ltr',
+      <div class="col-12 offset-md-1 col-md-5 py-5" [ngClass]="{
+        'order-md-12 px-10': direction === 'rtl', 
+        'order-md-1 px-10': direction === 'ltr',
         'd-none': !(title && title.length),
         'mx-md-auto': '!(items && items.length)'
       }" [style.textAlign]="textStyle">
-        <h6 class="mb-2" [style.color]="color" [ngClass]="{'px-4': direction === 'rtl'}">{{pretitle}}</h6>
+        <h5 class="mb-2 small-header" [style.color]="color" [ngClass]="{'px-4': direction === 'rtl'}">{{pretitle}}</h5>
         <h2 [ngClass]="{'px-4': direction === 'rtl'}">{{title}}</h2>
-        <div [innerHTML]="content" [ngClass]="{'pr-4': direction === 'ltr', 'px-4': direction === 'rtl'}"></div>
+        <div [innerHTML]="content" class="mt-4 bigger-font" [ngClass]="{'pr-2': direction === 'ltr', 'px-3': direction === 'rtl'}"></div>
         <div class="row no-gutters">
           <div class="col-4 col-md-3" *ngFor="let member of team">
             <sc-person-thumb [id]="member"></sc-person-thumb>
@@ -20,12 +20,16 @@
         </div>
       </div>
       <div class="col-12 col-md-6 py-md-5" [ngClass]="{
-        'order-12': direction === 'ltr', 
-        'order-1': direction === 'rtl',
+        'order-md-12 text-right': direction === 'ltr', 
+        'order-md-1': direction === 'rtl',
         'd-none': !(items && items.length)
       }">
-        <div *ngIf="items && items.length">
-          <gallery [id]="id" [items]="items" [style.height.px]="500" [counter]="false" [dots]="showDots"></gallery>
+        <div *ngIf="images && images.length">
+          <!-- <gallery [id]="id" [items]="items" [style.height.px]="500" [counter]="false" [dots]="showDots"></gallery> -->
+          <img [src]="images[0].url" class="img-fluid" *ngIf="images[0] && images[0].url">
+          <div class="embed-responsive embed-responsive-16by9" *ngIf="images[0] && images[0].src">
+            <iframe class="embed-responsive-item" src="{{images[0].url}}?rel=0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { PrismicService } from '../../services/prismic.service';
   styleUrls: ['./nav.component.scss'],
   animations: [
     trigger('animateNav', [
-      state('*', style({ height: '36px', width: '36px', background: 'transparent', zIndex: 1000 })),
+      state('*', style({ height: '36px', width: '36px', background: 'transparent', zIndex: 1000, 'overflow': 'hidden' })),
       state('opened', style({ height: '100vh', width: '100vw', background: 'black', zIndex: 1000 })),
       transition('* => opened', [
         query('.nav-body', stagger('300ms', [

@@ -16,7 +16,7 @@ export class Case {
             info.title = RichText.asText(raw.title).trim()
             info.tags = document.tags
             info.year = raw.year
-            info.client = raw.client.slug
+            info.client = raw.client && raw.client.slug ? raw.client.slug.replace(/-/g, ' ') : 'No client'
             info.slug = document.slugs[0]
             info.cover = {
                 main: raw.cover.url,

@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Lato:900|Maven+Pro');
+@import url('https://fonts.googleapis.com/css?family=Lato:900|Open+Sans:300|Oswald');
 
-$font-family-base: 'Maven Pro', sans-serif;
-$headings-font-family: 'Lato', sans-serif;
+$font-family-base: 'Open Sans', sans-serif;
+$headings-font-family: 'Oswald', sans-serif;
 
 $headings-font-weight: 900;
 
@@ -18,6 +18,15 @@ html,body{
 }
 
 .px-10{
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+}
+
+gallery{
+    background-color: transparent !important;
+}
+
+.bigger-font{
+    font-size: 1.05rem;
+    line-height: 1.7 !important;
 }

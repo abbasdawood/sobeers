@@ -24,6 +24,7 @@ export class CaseComponent implements OnInit {
 			.subscribe(data => {
         let caseStudy = new Case(data.case)
       this.caseStudy = caseStudy.getCase()
+      console.log(this.caseStudy)
       this.backgroundImage = this.sanitizer.bypassSecurityTrustStyle(`linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url(${this.caseStudy.info.cover.main})`)
       }, err => console.error(err))
   }
